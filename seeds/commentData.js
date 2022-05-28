@@ -13,7 +13,7 @@ const commentData = [
     "blog_id": 4
   },
   {
-    "user_id": 1,
+    "user_id": 3,
     "description": "That's a great way of describing the difference. Thanks!",
     "blog_id": 2
   },
