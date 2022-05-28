@@ -49,40 +49,43 @@
         <main class="container">
             <!-- {{{ body }}} -->
             <article class="row">
-                <form class="col s12 login-form">
-                    <h3 class="center-align">Login</h3>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">email</i>
-                            <input id="email" type="email" class="validate">
-                            <label for="email">Email</label>
-                            <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+                <div class="row">
+                    <div class="col s12">
+                        <div class="card grey lighten-1">
+                            <div class="card-content black-text">
+                                <a href="/blog/{{blog.id}}" class="card-title white-text">{{blog.title}} <font size="-1">Posted by {{blog.user.name}} on {{format_date blog.date_created}}</font></a>
+                                <p>{{blog.description}}</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">vpn_key</i>
-                            <input id="password" type="password" class="validate">
-                          <label for="password">Password</label>
+                </div>
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12">
+                            <textarea id="textarea1" class="materialize-textarea"></textarea>
+                            <label for="textarea1">Comment</label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <button class="waves-effect waves-light btn col s12" type="submit" name="action">Login</button>
-                    </div>
-                </form>
-                <a href="/signup">Sign Up Instead</a>
+                        {{#if logged_in}}
+                        <div class="row">
+                            <button class="waves-effect waves-light btn col s12" type="submit" name="action">Submit</button>
+                        </div>
+                        {{/if}}
+                    </form>
+                </div>
             </article>
         </main>
 
     <!-- Render script for logged in users only -->
     <!-- {{#if logged_in}} -->
-    <script src="../../public/js/logout.js"></script>
+    <script src="/js/logout.js"></script>
     <!-- {{/if}} -->
             
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- Calling JS code for sidenav-->
-    <script src="../../public/js/sidenav.js"></script>;
+    <script src="/js/sidenav.js"></script>;
 
   </body>
 </html>
