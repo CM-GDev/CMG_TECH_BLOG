@@ -14,13 +14,13 @@
     <!-- </head> -->
     <body>
         <!-- Establishing Nav tag with Materialize CSS class codes -->
-        <nav class="blue darken-1 nav-extended" id="navigation">
+        <nav class="teal lighten-2 nav-extended" id="navigation">
             <div class="nav-wrapper">
                 <h3 class="brand-logo flow-text truncate">CMG TechBloG</h3>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="/">Home<i class="material-icons right">home</i></a></li>
-                    <li><a href="/mydashboard">My Dashboard<i class="material-icons right">public</i></a></li>
+                    <li><a href="/dashboard">My Dashboard<i class="material-icons right">public</i></a></li>
                     {{#if logged_in}}
                     <li><a id="logout">logout<i class="material-icons right">account_circle</i></a></li>
                     {{else}}
@@ -32,7 +32,7 @@
         <!-- Code for side nav when screen is small -->
         <ul class="sidenav" id="mobile-demo">
             <li><a href="/">Home<i class="material-icons right">home</i></a></li>
-            <li><a href="/mydashboard">My Dashboard<i class="material-icons right">public</i></a></li>
+            <li><a href="/dashboard">My Dashboard<i class="material-icons right">public</i></a></li>
             <!-- Conditionally render login or logout links -->
             {{#if logged_in}}
             <li><a id="logout">logout<i class="material-icons right">account_circle</i></a></li>

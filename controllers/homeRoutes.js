@@ -46,9 +46,9 @@ router.get('/blog/:id', async (req, res) => {
     });
 
     const blog = blogData.get({ plain: true });
-    console.log(blog);
-    console.log(blog.comments);
-    console.log(blog.comments[0].user);
+    // console.log(blog);
+    // console.log(blog.comments);
+    // console.log(blog.comments[0].user);
 
     res.render('blog', {
       blog,
@@ -69,6 +69,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     });
 
     const user = userData.get({ plain: true });
+    console.log(user)
 
     res.render('dashboard', {
       ...user,
