@@ -1,3 +1,30 @@
-<div>
+<div class="grey-text text-darken-2">
     <h2>Welcome, {{user.name}}</h2>
 </div>
+<div class="row">
+    <a href="/dashboard/addpost" class="waves-effect waves-light btn col s12"><i class="material-icons right">add</i>Add Post</a>
+</div>
+<div class="grey-text text-darken-2">
+    <h4 class="center-align">Your Blogs:</h4>
+</div>
+
+{{#if blogs.length}}
+    {{#each blogs as |blog|}}
+        <div class="row">
+            <div class="col s12 l6">
+                <div class="card grey lighten-1">
+                    <div class="card-content black-text">
+                        <a href="/blog/{{blog.id}}" class="card-title white-text">{{blog.title}} <font size="-1">Posted by {{blog.user.name}} on {{format_date blog.date_created}}</font></a>
+                        <p>{{blog.description}}</p>
+                    </div>
+                </div>
+            </div>
+        
+        <a href="/dashboard/edit/{{blog.id}}" class="waves-effect waves-light btn col s12"><i class="material-icons right">edit</i>Edit Post</a>
+        </div>
+    {{/each}}
+
+{{else}}
+<h6 class="center-align">No blogs yet!</h6>
+
+{{/if}}

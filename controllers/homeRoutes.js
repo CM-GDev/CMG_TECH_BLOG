@@ -72,7 +72,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     console.log(user)
 
     res.render('dashboard', {
-      ...user,
+      user,
       logged_in: true
     });
   } catch (err) {
