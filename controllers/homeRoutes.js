@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Blog, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
+//homepage with all blogs posted to site
 router.get('/', async (req, res) => {
   try {
     // Get all blogs and JOIN with user data
@@ -27,6 +28,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+//page to an unique blog with its comments made by other users
 router.get('/blog/:id', async (req, res) => {
   try {
     const blogData = await Blog.findByPk(req.params.id, {
@@ -46,11 +48,11 @@ router.get('/blog/:id', async (req, res) => {
     });
 
     const blog = blogData.get({ plain: true });
-    // console.log(blog);
-    // console.log(blog.comments);
-    // console.log(blog.comments[0].user);
-
+    const blogID = req.params.id;
+    console.log(blogID)
+    
     res.render('blog', {
+      blogID,
       blog,
       logged_in: req.session.logged_in
     });
@@ -59,7 +61,29 @@ router.get('/blog/:id', async (req, res) => {
   }
 });
 
-// Use withAuth middleware to prevent access to route
+//page for logging in
+router.get('/login', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect('/dashboard');
+    return;
+  }
+
+  res.render('login');
+});
+
+//page for signing up
+router.get('/signup', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect('/dashboard');
+    return;
+  }
+
+  res.render('signup');
+});
+
+// Use withAuth middleware to prevent access to route. Specific user dashboard page
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
@@ -80,24 +104,47 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
-router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    res.redirect('/dashboard');
-    return;
-  }
+// Use withAuth middleware to prevent access to route. Page for adding a new blog/post
+router.get('/dashboard/add', withAuth, async (req, res) => {
+  try {
+    // Find the logged in user based on the session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      // include: [{ model: Blog }],
+    });
 
-  res.render('login');
+    const user = userData.get({ plain: true });
+    console.log(user)
+
+    res.render('addpost', {
+      user,
+      logged_in: true
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-router.get('/signup', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    res.redirect('/dashboard');
-    return;
-  }
+// Use withAuth middleware to prevent access to route. Page for edditing user's own posts/blogs
+router.get('/dashboard/edit/:id', withAuth, async (req, res) => {
+  try {
+    // Find the logged in user based on the session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Blog }],
+    });
 
-  res.render('signup');
+    const user = userData.get({ plain: true });
+    console.log(user)
+
+    res.render('editpost', {
+      user,
+      logged_in: true
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
+
 
 module.exports = router;
