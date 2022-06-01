@@ -4,7 +4,7 @@ async function commentFormHandler(event) {
     const textAreaData = document.querySelector('#textarea1')
     
     const description = textAreaData.value.trim();
-    const blog_id = textAreaData.getAttribute('name');
+    const blog_id = textAreaData.getAttribute('data-id');
     
     // console.log(description);
     // console.log(blog_id);

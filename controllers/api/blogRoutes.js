@@ -17,7 +17,7 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-//post a new comment to a specific blog/post and save it to db
+//post a new comment for a specific blog/post and save it to db
 router.post('/comment', withAuth, async (req, res) => {
   try {
     const newComment = await Comment.create({
@@ -35,9 +35,12 @@ router.post('/comment', withAuth, async (req, res) => {
 router.put('/:id', withAuth, async (req, res) => {
   try {
     const blogData = await Blog.update({
+      ...req.body,
+      user_id: req.session.user_id,
+    },
+    {
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
       },
     });
 

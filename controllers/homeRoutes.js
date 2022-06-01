@@ -128,17 +128,20 @@ router.get('/dashboard/add', withAuth, async (req, res) => {
 // Use withAuth middleware to prevent access to route. Page for edditing user's own posts/blogs
 router.get('/dashboard/edit/:id', withAuth, async (req, res) => {
   try {
-    // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Blog }],
+    const blogData = await Blog.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        }
+      ],
     });
 
-    const user = userData.get({ plain: true });
-    console.log(user)
+    const blog = blogData.get({ plain: true });
+    console.log(blog)
 
     res.render('editpost', {
-      user,
+      blog,
       logged_in: true
     });
   } catch (err) {
