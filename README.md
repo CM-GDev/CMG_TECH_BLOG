@@ -37,11 +37,11 @@
   5) From the root of your project folder, run 'npm install' from the command-line to install the required npm packages for the application
   6) Initiate the database in mysql before seeding it with 'npm run seed' from the command-line
   7) Run 'npm start' to start the server
-  8) In your web browser visit http://localhost:3001/ to start and interact with the application
+  8) In your web browser visit http://localhost:3001/ to interact with the application
   
   ## Usage
   
-  To use the deployed application, visit my Heroku page: [CMG_TechBloG] 
+  To use the deployed version of this application, visit my Heroku page: [CMG_TechBloG] 
     
   ## Credits
 
