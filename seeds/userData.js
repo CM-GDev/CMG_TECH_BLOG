@@ -1,4 +1,4 @@
-
+// db seeds for User model/table
 const { User } = require("../models");
 
 const userData = [

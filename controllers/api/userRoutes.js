@@ -1,7 +1,8 @@
+// establishing User model/table for access
 const router = require('express').Router();
 const { User } = require('../../models');
 
-//api/users (for new accounts: signup)
+//api/users/ route for new accounts: signup
 router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);
@@ -17,24 +18,24 @@ router.post('/', async (req, res) => {
   }
 });
 
-//api/users/login
+//api/users/login route
 router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
 
-    console.log("post body info:")
-    console.log(req.body)
+    // console.log("post body info:")
+    // console.log(req.body)
     if (!userData) {
       res
         .status(400)
         .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
-    console.log(userData)
+    // console.log(userData)
     const validPassword = await userData.checkPassword(req.body.password);
     
-    console.log("does password match?:")
-    console.log(validPassword)
+    // console.log("does password match?:")
+    // console.log(validPassword)
 
     if (!validPassword) {
       res
@@ -54,7 +55,7 @@ router.post('/login', async (req, res) => {
     res.status(400).json(err);
   }
 });
-
+// api/users/logout route 
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {

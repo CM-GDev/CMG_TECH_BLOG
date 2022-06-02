@@ -1,8 +1,9 @@
+// establishing helper files and db models/tables for webpage
 const router = require('express').Router();
 const { Blog, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
-//homepage with all blogs posted to site
+//route for homepage with all blogs posted to site
 router.get('/', async (req, res) => {
   try {
     // Get all blogs and JOIN with user data
@@ -28,7 +29,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-//page to an unique blog with its comments made by other users
+//route for unique blog page with its comments made by other users
 router.get('/blog/:id', async (req, res) => {
   try {
     const blogData = await Blog.findByPk(req.params.id, {
@@ -61,7 +62,7 @@ router.get('/blog/:id', async (req, res) => {
   }
 });
 
-//page for logging in
+//route for loggin page
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
@@ -72,7 +73,7 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-//page for signing up
+//route for sign up page
 router.get('/signup', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
@@ -125,7 +126,7 @@ router.get('/dashboard/add', withAuth, async (req, res) => {
   }
 });
 
-// Use withAuth middleware to prevent access to route. Page for edditing user's own posts/blogs
+// Use withAuth middleware to prevent access to route. Page for edditing and deleting user's own posts/blogs
 router.get('/dashboard/edit/:id', withAuth, async (req, res) => {
   try {
     const blogData = await Blog.findByPk(req.params.id, {

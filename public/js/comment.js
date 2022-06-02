@@ -1,3 +1,4 @@
+// fetch function for adding a comment to a post
 async function commentFormHandler(event) {
     event.preventDefault();
   

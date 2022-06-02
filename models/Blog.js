@@ -1,3 +1,4 @@
+// Creating a Blog model/table for the websites db
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 

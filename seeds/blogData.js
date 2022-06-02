@@ -1,4 +1,4 @@
-
+// seeds for Blog model/table
 const{ Blog } = require('../models');
 
 const blogData = [

@@ -1,4 +1,4 @@
-
+// fetch function for editing post
 const editPostHandler = async (event) => {
   event.preventDefault();
 
@@ -23,7 +23,7 @@ const editPostHandler = async (event) => {
     }
   }
 };
-
+//  fetch function to delete a post
 const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');

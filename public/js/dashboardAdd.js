@@ -1,3 +1,4 @@
+// fetch function for adding a new post
 const newPostHandler = async (event) => {
   event.preventDefault();
 

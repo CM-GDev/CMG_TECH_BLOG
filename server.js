@@ -1,3 +1,4 @@
+// establish all required npm packages and local files
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
@@ -14,6 +15,7 @@ const PORT = process.env.PORT || 3001;
 // Set up Handlebars.js engine with custom helpers
 const hbs = exphbs.create({ helpers });
 
+// Set properties webpage sessions
 const sess = {
   secret: 'AccessGranted321',
   cookie: {
@@ -37,6 +39,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Set the routes to use for webpage
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {

@@ -1,7 +1,9 @@
+// calling all models
 const User = require('./User');
 const Blog = require('./Blog');
 const Comment = require('./Comment');
 
+// establishing relations between models/tables with foreing keys
 User.hasMany(Blog, {
   foreignKey: 'user_id',
   onDelete: 'CASCADE'

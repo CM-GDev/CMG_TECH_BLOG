@@ -1,3 +1,4 @@
+// fetch function for creating a new account (signup)
 const signupFormHandler = async (event) => {
   event.preventDefault();
 

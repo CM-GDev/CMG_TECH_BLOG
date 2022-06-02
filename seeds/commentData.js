@@ -1,4 +1,4 @@
-
+// db seeds for Comment model/table
 const{ Comment } = require('../models');
 
 const commentData = [

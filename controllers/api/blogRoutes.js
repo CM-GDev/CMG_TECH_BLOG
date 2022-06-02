@@ -3,7 +3,7 @@ const { Blog } = require('../../models');
 const { Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-//post a new blog and save it to db
+//api/blogs/ route for posting a new blog and saving it to db
 router.post('/', withAuth, async (req, res) => {
   try {
     const newBlog = await Blog.create({
@@ -17,7 +17,7 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-//post a new comment for a specific blog/post and save it to db
+//api/blogs/comment route for posting a new comment for a specific blog/post and saving it to db
 router.post('/comment', withAuth, async (req, res) => {
   try {
     const newComment = await Comment.create({
@@ -31,7 +31,7 @@ router.post('/comment', withAuth, async (req, res) => {
   }
 });
 
-//update specific blog
+//api/blogs/${id} route for updating a specific blog
 router.put('/:id', withAuth, async (req, res) => {
   try {
     const blogData = await Blog.update({
@@ -56,7 +56,7 @@ router.put('/:id', withAuth, async (req, res) => {
 });
 
 
-//delete specific blog
+//api/blogs/${id} route for deleting a specific blog
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const blogData = await Blog.destroy({

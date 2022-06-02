@@ -1,3 +1,4 @@
+{{!-- dashboard page for logged in user --}}
 <div class="grey-text text-darken-2">
     <h2>Welcome, {{user.name}}</h2>
 </div>
@@ -7,7 +8,7 @@
 <div class="grey-text text-darken-2">
     <h4 class="center-align">Your Blogs:</h4>
 </div>
-
+{{!-- display all of users posts/blogs --}}
 {{#if user.blogs.length}}
     {{#each user.blogs as |blog|}}
         <div class="row">

@@ -1,3 +1,4 @@
+// Creating a User model/table for the websites db
 const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
