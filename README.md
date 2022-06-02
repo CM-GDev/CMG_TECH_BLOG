@@ -12,9 +12,12 @@
     - Established Express.js routes to deploy the application
     - Used Handlebars.js as the templating language
     
-  The following are screenshots of the application submitted for review.  
+  The following are screenshots of the application running on my local server and MySQL Databased initiated with data.  
 
-  ![Insomnia](./assets/screenshot.JPG)  
+  ![Screeshoot1](./public/images/page1.JPG)  
+  ![Screeshoot2](./public/images/page2.JPG)  
+  ![Screeshoot3](./public/images/page3.JPG)  
+  ![Screeshoot4](./public/images/page4.JPG)  
    
    
   ## Table of Contents
@@ -41,7 +44,7 @@
   
   ## Usage
   
-  To use the deployed version of this application, visit my Heroku page: [CMG_TechBloG] 
+  To use the deployed version of this application, visit my Heroku page: [CMG_TechBloG](https://cryptic-castle-82513.herokuapp.com/) 
     
   ## Credits
 
